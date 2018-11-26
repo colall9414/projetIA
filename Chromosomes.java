@@ -17,14 +17,7 @@ public class Chromosomes {
 		  Color color;
 		  int length;
 	}
-	/*
-	 * Pick a integer between [min;max[
-	 */
-	static int rand_between(int min, int max) 
-	{
-	  return (int) (Math.random()%(max-min) +min);
-	}
-
+	
 	/*
 	 * Translate a gene to make a protein
 	 * (Return a circle definition made from a gene)
@@ -44,16 +37,16 @@ public class Chromosomes {
 	 */
 	void randomize_gene(Gene gene)
 	{
+	  Random ra=new Random();
+	  gene.x = ra.nextInt(256);
+	  gene.y = ra.nextInt(256);
 	  
-	  gene.x = rand_between(0, 256);
-	  gene.y = rand_between(0, 256);
-	  
-	  int r = rand_between(0, 256);
-	  int g = rand_between(0, 256);
-	  int b = rand_between(0, 256);
+	  int r = ra.nextInt(256);
+	  int g = ra.nextInt(256);
+	  int b = ra.nextInt(256);
 	  
 	  gene.color = Color.rgb(r, g, b);
-	  gene.length = rand_between(0, 256);
+	  gene.length = ra.nextInt(256);
 	}
 	
 	/*
@@ -61,24 +54,26 @@ public class Chromosomes {
 	 */
 	void mutate_gene(Gene gene)
 	{
+		Random ra=new Random();
 		int r=0,g=0,b=0 ;
 	    Gene ge = new Gene();
 	  if(Math.random() % 1000 == 0 )
-	    gene.x = rand_between(0,256);
+	    gene.x = ra.nextInt(256);
 	  if(Math.random()% 1000 == 0)  
-	    gene.y = rand_between(0,256);
+	    gene.y = ra.nextInt(256);
 	 
 	  if(Math.random() % 1000 == 0)
-	     r = rand_between(0,256);
+	     r = ra.nextInt(256);
 	  if(Math.random() % 1000 == 0)
-	    g = rand_between(0,256);
+	    g = ra.nextInt(256);
 	  if(Math.random() % 1000 == 0)
-	    b = rand_between(0,256);
+	    b = ra.nextInt(256);
 	  ge.color=Color.rgb(r, g, b);
 
 	  if(Math.random() % 500 == 0)
-	    gene.length = rand_between(0, 256);
+	    gene.length = ra.nextInt(256);
 	}
 	
 	
 }
+
